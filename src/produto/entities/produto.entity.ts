@@ -1,11 +1,12 @@
 import { IsNotEmpty, Min } from 'class-validator';
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
-  UpdateDateColumn,
+  Entity,
   ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm';
+import { Categoria } from '../../categoria/entities/categoria.entity';
 
 @Entity({ name: 'tb_game' })
 export class Produto {
@@ -32,7 +33,7 @@ export class Produto {
   @UpdateDateColumn()
   data: Date;
 
-  @ManyToOne(() => Categoria, (categoria) => categoria.postagem, {
+  @ManyToOne(() => Categoria, (categoria) => categoria.produto, {
     onDelete: 'CASCADE',
   })
   categoria: Categoria;
