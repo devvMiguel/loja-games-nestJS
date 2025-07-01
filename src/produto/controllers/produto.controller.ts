@@ -1,3 +1,18 @@
+import {
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+  Post,
+  Body,
+  Put,
+  Delete,
+} from '@nestjs/common';
+import { Produto } from '../entities/produto.entity';
+import { ProdutoService } from '../service/produto.service';
+
 @Controller('/produtos')
 export class ProdutoController {
   constructor(private readonly produtoService: ProdutoService) {}

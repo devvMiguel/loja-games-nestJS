@@ -1,3 +1,12 @@
+import { IsNotEmpty, Min } from 'class-validator';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  UpdateDateColumn,
+  ManyToOne,
+} from 'typeorm';
+
 @Entity({ name: 'tb_game' })
 export class Produto {
   @PrimaryGeneratedColumn()
@@ -15,7 +24,7 @@ export class Produto {
   @IsNotEmpty()
   @Column({ length: 100, nullable: false })
   plataforma: string;
-  
+
   @IsNotEmpty()
   @Column({ length: 100, nullable: false })
   classificacao: string;
@@ -23,8 +32,8 @@ export class Produto {
   @UpdateDateColumn()
   data: Date;
 
-  @ManyToOne(() => Tema, (tema) => tema.postagem, {
+  @ManyToOne(() => Categoria, (categoria) => categoria.postagem, {
     onDelete: 'CASCADE',
   })
-  tema: Tema;
+  categoria: Categoria;
 }
